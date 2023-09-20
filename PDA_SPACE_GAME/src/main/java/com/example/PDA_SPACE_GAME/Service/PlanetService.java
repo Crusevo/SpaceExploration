@@ -15,7 +15,6 @@ public class PlanetService {
     @Autowired
     PlanetRepository planetRepository;
 
-
     public Planet createPlanet(){
 
         Planet planet = new Planet();
@@ -27,7 +26,7 @@ public class PlanetService {
         return planet;
     }
 
-    public void getPlanet(long planetId) {
+    public void getPlanetMap(long planetId) {
         Planet byId = planetRepository.findById(planetId).orElseThrow();
 
         PlanetMapView.mapView(byId.getPlanetMap());

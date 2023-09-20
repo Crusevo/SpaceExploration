@@ -19,10 +19,11 @@ public class UniverseRestController {
         universeService.createUniverse();
     }
 
-    @GetMapping("/universe/show/")
+    @GetMapping("/universe/showUniverse/")
     public void showUniverse(){
         universeService.showUniverse();
     }
+
 
 
 }

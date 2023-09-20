@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.context.annotation.Bean;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +18,7 @@ public class Universe {
     private long id;
 
     @Column(columnDefinition = "LONGBLOB")
-    private Planet[][] universePlanets = new Planet [10][10];
+    private Object[][] universeObjects = new Object[10][10];
 
 
 

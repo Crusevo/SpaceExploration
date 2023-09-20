@@ -14,14 +14,9 @@ public class PlanetRestController {
         this.planetService = planetService;
     }
 
-    @PostMapping("/planet/create/")
-    public void  createPlanet(){
-       planetService.createPlanet();
-    }
-
-    @GetMapping("/planet/getPlanet/{planetId}")
+    @GetMapping("/planet/getPlanetMap/{planetId}")
     public void getPlanet(@PathVariable ("planetId") long planetId){
-        planetService.getPlanet(planetId);
+        planetService.getPlanetMap(planetId);
     }
 
 }
