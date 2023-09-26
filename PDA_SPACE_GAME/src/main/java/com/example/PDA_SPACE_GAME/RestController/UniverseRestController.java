@@ -20,9 +20,15 @@ public class UniverseRestController {
     }
 
     @GetMapping("/universe/showUniverse/")
-    public void showUniverse(){
-        universeService.showUniverse();
+    public Universe showUniverse(){
+        return universeService.showUniverse();
     }
+
+    @PostMapping("/universe/")
+    public void  moveShipInXDirection(){
+        universeService.update();
+    }
+
 
 
 

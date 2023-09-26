@@ -1,5 +1,6 @@
 package com.example.PDA_SPACE_GAME.Service;
 
+
 import com.example.PDA_SPACE_GAME.Model.Planet;
 import com.example.PDA_SPACE_GAME.Repository.PlanetRepository;
 import com.example.PDA_SPACE_GAME.PlanetUtility.PlanetMapCreator;
@@ -27,8 +28,8 @@ public class PlanetService {
     }
 
     public void getPlanetMap(long planetId) {
-        Planet byId = planetRepository.findById(planetId).orElseThrow();
 
+        Planet byId = planetRepository.findById(planetId).orElseThrow();
         PlanetMapView.mapView(byId.getPlanetMap());
 
     }
