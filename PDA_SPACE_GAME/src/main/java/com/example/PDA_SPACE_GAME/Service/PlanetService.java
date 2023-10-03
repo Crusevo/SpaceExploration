@@ -22,7 +22,7 @@ public class PlanetService {
         planet.setPlanetMap(PlanetMapCreator.mapCreator());
         planet.setPlanetName(PlanetNameCreator.nameCreator());
 
-        planetRepository.save(planet);
+        planetRepository.saveAndFlush(planet);
 
         return planet;
     }

@@ -3,17 +3,17 @@ package com.example.PDA_SPACE_GAME.Service;
 import com.example.PDA_SPACE_GAME.Model.Planet;
 import com.example.PDA_SPACE_GAME.Model.Ship;
 import com.example.PDA_SPACE_GAME.Model.Universe;
-import com.example.PDA_SPACE_GAME.MyFrame;
+import com.example.PDA_SPACE_GAME.GameUtylity.MyFrame;
 import com.example.PDA_SPACE_GAME.Repository.ShipRepository;
 import com.example.PDA_SPACE_GAME.Repository.UniverseRepository;
 import com.example.PDA_SPACE_GAME.UniverseUtility.UniverseView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.swing.*;
 import java.awt.*;
 import java.util.List;
-import java.util.Optional;
 import java.util.Random;
 
 @Service
@@ -21,65 +21,72 @@ public class UniverseService {
 
     @Autowired
     UniverseRepository universeRepository;
-
     @Autowired
     ShipRepository shipRepository;
-
     @Autowired PlanetService planetService;
-
-
-    MyFrame myFrame = new MyFrame();
-
     @Autowired UniverseView universeView;
 
 
-
-
-    public Universe showUniverse(){
-
-        JPanel jPanel = new JPanel();
+    @Transactional
+    public List<String> showUniverse(){
 
         Universe universe = universeRepository.findAll().get(0);
 
+        java.util.List<String> strings = universeView.universeView(universe.getUniverseObjects());
 
-        universeView.universeView(universe.getUniverseObjects(),jPanel);
+        return strings;
 
-        jPanel.setVisible(true);
-        jPanel.setPreferredSize(new Dimension(600,600));
-        jPanel.setBackground(Color.gray);
-        jPanel.setLayout(new FlowLayout());
+    }
 
-        myFrame.getContentPane().removeAll();
-        myFrame.getContentPane().add(jPanel);
-        myFrame.validate();
+    public Object geticon(){
 
-        return universe;
+        Object[][] universeObjects = universeRepository.findById(1L).orElseThrow().getUniverseObjects();
+        Object i = universeObjects[1][1];
 
+        return i;
     }
 
 
 
-
+    @Transactional
     public void update() {
 
-        Universe universe = universeRepository.findAll().get(0);
+        try {
 
-        Object[][] universeObjects = universe.getUniverseObjects();
+            Universe universe = universeRepository.findAll().get(0);
+            Object[][] universeObjects = universe.getUniverseObjects();
+
+            Ship shipById = shipRepository.findById(1L).orElseThrow();
+
+            int coordinatesOfShipX = shipById.getCoordinatesOfShipX();
+            int coordinatesOfShipY = shipById.getCoordinatesOfShipY();
+
+            universeObjects[coordinatesOfShipX][coordinatesOfShipY] = null;
+            universeObjects[coordinatesOfShipX + 0][coordinatesOfShipY + 1] = shipById;
+
+            shipById.setCoordinatesOfShipX(shipById.getCoordinatesOfShipX() + 0);
+            shipById.setCoordinatesOfShipY(shipById.getCoordinatesOfShipY() + 1);
+
+            universe.setUniverseObjects(universeObjects);
+
+            universe.setVersion(universe.getVersion() + 1);
+
+            universeRepository.saveAndFlush(universe);
+            shipRepository.saveAndFlush(shipById);
 
 
-        Planet planet = planetService.createPlanet();
 
-        System.out.println(universeObjects[6][6]);
+        }catch (ArrayIndexOutOfBoundsException e){
+            System.out.println("You have reached edge of universe!");
+        }
 
-        universeObjects[6][6] = planet;
 
-        universeRepository.save(universe);
-
-        System.out.println(universeObjects[6][6]);
 
 
     }
 
+
+    @Transactional
     public void spawnShip(Object[][] universeObject){
 
         Random random = new Random();
@@ -92,13 +99,14 @@ public class UniverseService {
         ship.setShipName("M-109");
         ship.setCoordinatesOfShipX(x);
         ship.setCoordinatesOfShipY(y);
-        shipRepository.save(ship);
+        shipRepository.saveAndFlush(ship);
 
         universeObject[x][y] = ship;
 
 
     }
 
+    @Transactional
     public void createUniverse() {
 
         if (universeRepository.findAll().isEmpty()) {
@@ -106,7 +114,6 @@ public class UniverseService {
             Random random = new Random();
             Universe universe = new Universe();
             Object[][] universeObjects = universe.getUniverseObjects();
-
 
             spawnShip(universeObjects);
 
@@ -116,7 +123,7 @@ public class UniverseService {
                 universeObjects[random.nextInt(10)][random.nextInt(10)] = planet;
 
             }
-            universeRepository.save(universe);
+            universeRepository.saveAndFlush(universe);
 
         } else {
             System.out.println("Universe already exist!");
@@ -125,4 +132,9 @@ public class UniverseService {
 
     }
 
+    public String getShipName() {
+
+        return shipRepository.findById(1L).orElseThrow().getShipName();
+
+    }
 }

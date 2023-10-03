@@ -8,50 +8,51 @@ import org.springframework.stereotype.Component;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
+
 @Component
 public class UniverseView {
 
 
-    public JPanel universeView(Object[][] universe, JPanel jPanel){
 
+    public List<String> universeView(Object[][] universe){
+
+        List<String> stringList = new ArrayList<>();
 
         System.out.println("Universe map!");
 
         for (int i = 0; i < 10; i++){
 
-            for (int j = 0; j < 10; j++){
+            StringBuilder stringBuilder = new StringBuilder();
 
+            for (int j = 0; j < 10; j++){
 
                 if(universe[i][j] == null){
                     System.out.print("[ ]");
-                    JButton jButton = new JButton(" ");
-                    jButton.setPreferredSize(new Dimension(50,50));
-                    jPanel.add(jButton);
+                    stringBuilder.append("[...]");
 
                 }
                 else if (universe[i][j] instanceof Ship){
                     System.out.print("[X]");
-                    JButton jButton = new JButton("X");
-                    jButton.setPreferredSize(new Dimension(50,50));
-                    jPanel.add(jButton);
+                    stringBuilder.append("[X]");
 
                 }
                 else{
                     System.out.print("[O]");
-                    JButton jButton = new JButton("O");
-                    jButton.setPreferredSize(new Dimension(50,50));
-                    jPanel.add(jButton);
-
+                    stringBuilder.append("[O]");
 
                 }
 
             }
             System.out.println(" ");
 
+            stringList.add(stringBuilder.toString());
+
         }
         System.out.println();
 
-        return jPanel;
+        return stringList;
 
     }
 

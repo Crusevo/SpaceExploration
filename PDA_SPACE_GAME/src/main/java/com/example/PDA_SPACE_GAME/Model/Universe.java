@@ -22,6 +22,7 @@ public class Universe {
     @Column(columnDefinition = "LONGBLOB")
     private Object[][] universeObjects = new Object[10][10];
 
+    private int version = 0;
 
 
 }
