@@ -1,22 +1,16 @@
 package com.example.PDA_SPACE_GAME.UniverseUtility;
 
-import com.example.PDA_SPACE_GAME.Model.Planet;
 import com.example.PDA_SPACE_GAME.Model.Ship;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
-import javax.swing.*;
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class UniverseView {
+public class LocalUniverseView {
 
 
-
-    public List<String> universeView(Object[][] universe){
+    public List<String> localUniverseView(Object[][] universe){
 
         List<String> stringList = new ArrayList<>();
 

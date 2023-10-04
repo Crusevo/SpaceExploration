@@ -7,7 +7,6 @@ import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.context.annotation.Bean;
 
 import java.io.Serializable;
 
@@ -23,8 +22,10 @@ public class Ship implements Serializable {
 
     private String shipName;
 
-    private int coordinatesOfShipX;
+    private int localCoordinatesX;
+    private int localCoordinatesY;
 
-    private int coordinatesOfShipY;
+    private int mainCoordinatesX;
+    private int mainCoordinatesY;
 
 }

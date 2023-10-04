@@ -1,25 +1,22 @@
 package com.example.PDA_SPACE_GAME;
 
 
-import com.example.PDA_SPACE_GAME.Service.UniverseService;
+import com.example.PDA_SPACE_GAME.Service.LocalUniverseService;
+import com.example.PDA_SPACE_GAME.Service.MainUniverseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
-import org.springframework.stereotype.Controller;
 
 import javax.swing.*;
-import java.awt.*;
-import java.util.Scanner;
-
-import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 
 @SpringBootApplication
 public class PdaSpaceGameApplication extends JFrame implements CommandLineRunner {
 
 	@Autowired
-	UniverseService universeService;
+	LocalUniverseService localUniverseService;
+	@Autowired
+	MainUniverseService mainUniverseService;
 
 
 	public static void main(String[] args) {
@@ -32,7 +29,8 @@ public class PdaSpaceGameApplication extends JFrame implements CommandLineRunner
 
 	@Override
 	public void run(String... args) throws Exception {
-		universeService.createUniverse();
-		universeService.showUniverse();
+//		universeService.createLocalUniverse();
+		mainUniverseService.createMainUniverse();
+		localUniverseService.showUniverse();
 	}
 }

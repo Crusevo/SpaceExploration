@@ -4,25 +4,20 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.context.annotation.Bean;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Universe {
+public class MainUniverse {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private long mainUniverseId;
 
     @Column(columnDefinition = "LONGBLOB")
-    private Object[][] universeObjects = new Object[10][10];
+    private LocalUniverse[][] mainUniverseObjects = new LocalUniverse[5][5];
 
-    private int version = 0;
-
+    private int mainUniverseVersion = 0;
 
 }

@@ -16,7 +16,6 @@ h2{
 }
 
 
-
 body {
  background-image: url("https://staticdelivery.nexusmods.com/mods/2188/images/17/17-1663271656-480869147.png");
 
@@ -29,32 +28,32 @@ body {
 
 
 
-
-<button id="up" type="submit" class="btn btn-danger" style="padding: 3px; position: absolute; top: 705px; left: 1070px" >⮝</button>
-<button id="down" type="submit" class="btn btn-danger" style="padding: 3px; position: absolute; top: 745px; left: 1070px">⮟</button>
-<button id="left" type="submit" class="btn btn-danger" style="padding: 3px; position: absolute; top: 725px; left: 1040px"  >⮜</button>
-<button id="right" type="submit" class="btn btn-danger" style="padding: 3px; position: absolute; top: 725px; left: 1100px" >⮞</button>
-
-
-<form th:action="@{/universe}" method="post">
-    <button type="submit">Przesuń</button>
+<form th:action="@{/moveShip/up/}" method="post">
+<button id="up" type="submit" class="btn btn-dark" style="padding: 3px; position: absolute; color: green; top: 705px; left: 1070px" >⮝</button>
 </form>
 
+<form th:action="@{/moveShip/down/}" method="post">
+<button id="down" type="submit" class="btn btn-dark" style="padding: 3px; position: absolute; color: green; top: 745px; left: 1070px">⮟</button>
+</form>
 
+<form th:action="@{/moveShip/left/}" method="post">
+<button id="left" type="submit" class="btn btn-dark" style="padding: 3px; position: absolute; color: green; top: 725px; left: 1040px"  >⮜</button>
+</form>
 
+<form th:action="@{/moveShip/right/}" method="post">
+<button id="right" type="submit" class="btn btn-dark" style="padding: 3px; position: absolute; color: green; top: 725px; left: 1100px" >⮞</button>
+</form>
 
-<p id="a0" style="color:green; font-family: Times New Roman; font-size: 15px; rotate: -0deg; position: absolute; top: 705px; left: 810px" th:text="${test.get(0)}"></p>
-<p id="a1" style="color:green; font-family: Times New Roman; font-size: 15px; rotate: -0deg; position: absolute; top: 720px; left: 810px" th:text="${test.get(1)}"></p>
-<p id="a2" style="color:green; font-family: Times New Roman; font-size: 15px; rotate: -0deg; position: absolute; top: 735px; left: 810px" th:text="${test.get(2)}"></p>
-<p id="a3" style="color:green; font-family: Times New Roman; font-size: 15px; rotate: -0deg; position: absolute; top: 750px; left: 810px" th:text="${test.get(3)}"></p>
-<p id="a4" style="color:green; font-family: Times New Roman; font-size: 15px; rotate: -0deg; position: absolute; top: 765px; left: 810px" th:text="${test.get(4)}"></p>
-<p id="a5" style="color:green; font-family: Times New Roman; font-size: 15px; rotate: -0deg; position: absolute; top: 780px; left: 810px" th:text="${test.get(5)}"></p>
-<p id="a6" style="color:green; font-family: Times New Roman; font-size: 15px; rotate: -0deg; position: absolute; top: 795px; left: 810px" th:text="${test.get(6)}"></p>
-<p id="a7" style="color:green; font-family: Times New Roman; font-size: 15px; rotate: -0deg; position: absolute; top: 810px; left: 810px" th:text="${test.get(7)}"></p>
-<p id="a8" style="color:green; font-family: Times New Roman; font-size: 15px; rotate: -0deg; position: absolute; top: 825px; left: 810px" th:text="${test.get(8)}"></p>
-<p id="a9" style="color:green; font-family: Times New Roman; font-size: 15px; rotate: -0deg; position: absolute; top: 840px; left: 810px" th:text="${test.get(9)}"></p>
-
-
+<p id="a0" style="color:green; font-family: Times New Roman; font-size: 15px; rotate: -0deg; position: absolute; top: 705px; left: 810px" th:text="${universe.get(0)}"></p>
+<p id="a1" style="color:green; font-family: Times New Roman; font-size: 15px; rotate: -0deg; position: absolute; top: 720px; left: 810px" th:text="${universe.get(1)}"></p>
+<p id="a2" style="color:green; font-family: Times New Roman; font-size: 15px; rotate: -0deg; position: absolute; top: 735px; left: 810px" th:text="${universe.get(2)}"></p>
+<p id="a3" style="color:green; font-family: Times New Roman; font-size: 15px; rotate: -0deg; position: absolute; top: 750px; left: 810px" th:text="${universe.get(3)}"></p>
+<p id="a4" style="color:green; font-family: Times New Roman; font-size: 15px; rotate: -0deg; position: absolute; top: 765px; left: 810px" th:text="${universe.get(4)}"></p>
+<p id="a5" style="color:green; font-family: Times New Roman; font-size: 15px; rotate: -0deg; position: absolute; top: 780px; left: 810px" th:text="${universe.get(5)}"></p>
+<p id="a6" style="color:green; font-family: Times New Roman; font-size: 15px; rotate: -0deg; position: absolute; top: 795px; left: 810px" th:text="${universe.get(6)}"></p>
+<p id="a7" style="color:green; font-family: Times New Roman; font-size: 15px; rotate: -0deg; position: absolute; top: 810px; left: 810px" th:text="${universe.get(7)}"></p>
+<p id="a8" style="color:green; font-family: Times New Roman; font-size: 15px; rotate: -0deg; position: absolute; top: 825px; left: 810px" th:text="${universe.get(8)}"></p>
+<p id="a9" style="color:green; font-family: Times New Roman; font-size: 15px; rotate: -0deg; position: absolute; top: 840px; left: 810px" th:text="${universe.get(9)}"></p>
 
 
 </body>
