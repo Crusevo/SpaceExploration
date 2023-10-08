@@ -31,6 +31,6 @@ public class PdaSpaceGameApplication extends JFrame implements CommandLineRunner
 	public void run(String... args) throws Exception {
 //		universeService.createLocalUniverse();
 		mainUniverseService.createMainUniverse();
-		localUniverseService.showUniverse();
+//		localUniverseService.showUniverse();
 	}
 }

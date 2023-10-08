@@ -30,13 +30,18 @@ public class LocalUniverseService {
     MainUniverseRepository mainUniverseRepository;
 
 
+
     @Transactional
     public List<String> showUniverse(){
 
         MainUniverse mainUniverse = mainUniverseRepository.findById(1L).orElseThrow();
         LocalUniverse[][] mainUniverseObjects = mainUniverse.getMainUniverseObjects();
 
-        Object[][] localUniverseObjects = mainUniverseObjects[mainUniverseObjects.length / 2][mainUniverseObjects.length / 2].getLocalUniverseObjects();
+        Ship ship = shipRepository.findById(1L).orElseThrow();
+
+        Object[][] localUniverseObjects = mainUniverseObjects[ship.getMainCoordinatesX()][ship.getMainCoordinatesY()].getLocalUniverseObjects();
+
+        localUniverseObjects[ship.getLocalCoordinatesX()][ship.getLocalCoordinatesY()] = ship;
 
         java.util.List<String> strings = universeView.localUniverseView(localUniverseObjects);
 

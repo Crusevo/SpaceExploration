@@ -24,62 +24,98 @@ public class ShipService {
     @Transactional
     public void moveShipUp() {
 
-        try {
-            moveShip(-1,0);
+        Ship shipById = shipRepository.findById(1L).orElseThrow();
 
-        }catch (ArrayIndexOutOfBoundsException e){
-            System.out.println("You have reached edge of universe!");
+        if(shipById.getLocalCoordinatesX() == 0){
+            clearPreviousLocalUniverse(shipById.getMainCoordinatesX(), shipById.getMainCoordinatesY(),shipById.getLocalCoordinatesX(),shipById.getLocalCoordinatesY());
+
+            shipById.setMainCoordinatesY(shipById.getMainCoordinatesX() - 1);
+            shipById.setLocalCoordinatesX(9);
+
+        }else {
+
+            moveShip(-1, 0);
+
         }
+
     }
 
     @Transactional
     public void moveShipDown() {
 
-        try {
-            moveShip(1,0);
 
-        }catch (ArrayIndexOutOfBoundsException e){
-            System.out.println("You have reached edge of universe!");
+        Ship shipById = shipRepository.findById(1L).orElseThrow();
+
+        if(shipById.getLocalCoordinatesX() == 9){
+            clearPreviousLocalUniverse(shipById.getMainCoordinatesX(), shipById.getMainCoordinatesY(),shipById.getLocalCoordinatesX(),shipById.getLocalCoordinatesY());
+
+            shipById.setMainCoordinatesY(shipById.getMainCoordinatesX() + 1);
+            shipById.setLocalCoordinatesX(0);
+
+        }else {
+
+            moveShip(1, 0);
+
         }
     }
 
     @Transactional
     public void moveShipRight() {
 
-        try {
-            moveShip(0,1);
+        Ship shipById = shipRepository.findById(1L).orElseThrow();
 
-        }catch (ArrayIndexOutOfBoundsException e){
-            System.out.println("You have reached edge of universe!");
+        if(shipById.getLocalCoordinatesY() == 9){
+            clearPreviousLocalUniverse(shipById.getMainCoordinatesX(), shipById.getMainCoordinatesY(),shipById.getLocalCoordinatesX(),shipById.getLocalCoordinatesY());
+
+            shipById.setMainCoordinatesY(shipById.getMainCoordinatesY() + 1);
+            shipById.setLocalCoordinatesY(0);
+
+        }else {
+
+                moveShip(0, 1);
+
         }
     }
 
     @Transactional
     public void moveShipLeft() {
 
-        try {
-            moveShip(0,-1);
+        Ship shipById = shipRepository.findById(1L).orElseThrow();
 
-        }catch (ArrayIndexOutOfBoundsException e){
-            System.out.println("You have reached edge of universe!");
+
+        if(shipById.getLocalCoordinatesY() == 0){
+
+            clearPreviousLocalUniverse(shipById.getMainCoordinatesX(), shipById.getMainCoordinatesY(),shipById.getLocalCoordinatesX(),shipById.getLocalCoordinatesY());
+
+                shipById.setMainCoordinatesY(shipById.getMainCoordinatesY() - 1);
+                shipById.setLocalCoordinatesY(9);
+
+        }else {
+                moveShip(0, -1);
         }
     }
 
     public void moveShip(int x, int y){
 
+        Ship shipById = shipRepository.findById(1L).orElseThrow();
+
         MainUniverse mainUniverse = mainUniverseRepository.findById(1L).orElseThrow();
         LocalUniverse[][] mainUniverseObjects = mainUniverse.getMainUniverseObjects();
 
-        LocalUniverse localUniverse = mainUniverseObjects[mainUniverseObjects.length / 2][mainUniverseObjects.length / 2];
+        LocalUniverse localUniverse = mainUniverseObjects[shipById.getMainCoordinatesX()][shipById.getMainCoordinatesY()];
+
+        checkingIfAnyObjectIsAheadYou(shipById,localUniverse,x,y);
+
+    }
+
+
+    public void checkingIfAnyObjectIsAheadYou(Ship shipById, LocalUniverse localUniverse,int x, int y){
+
         Object[][] localUniverseObjects = localUniverse.getLocalUniverseObjects();
-
-
-        Ship shipById = shipRepository.findById(1L).orElseThrow();
 
         int localCoordinatesX = shipById.getLocalCoordinatesX();
         int localCoordinatesY = shipById.getLocalCoordinatesY();
 
-        
         if(localUniverseObjects[localCoordinatesX + x][localCoordinatesY + y] == null){
 
             localUniverseObjects[localCoordinatesX][localCoordinatesY] = null;
@@ -102,6 +138,21 @@ public class ShipService {
 
     }
 
+    public void clearPreviousLocalUniverse(int shipMainCoordinatesX, int shipMainCoordinatesY,int shipLocalCoordinatesX,int shipLocalCoordinatesY){
+
+        MainUniverse mainUniverse = mainUniverseRepository.findById(1L).orElseThrow();
+        LocalUniverse[][] mainUniverseObjects = mainUniverse.getMainUniverseObjects();
+
+        LocalUniverse localUniverse = mainUniverseObjects[shipMainCoordinatesX][shipMainCoordinatesY];
+        Object[][] localUniverseObjects = localUniverse.getLocalUniverseObjects();
+        localUniverseObjects[shipLocalCoordinatesX][shipLocalCoordinatesY] = null;
+
+        localUniverse.setLocalUniverseVersion(localUniverse.getLocalUniverseVersion() + 1);
+
+        localUniverseRepository.saveAndFlush(localUniverse);
+        mainUniverseRepository.saveAndFlush(mainUniverse);
+
+    }
 
 
 
