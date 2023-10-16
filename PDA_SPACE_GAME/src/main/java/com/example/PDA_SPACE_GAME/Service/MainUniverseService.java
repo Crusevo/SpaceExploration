@@ -17,7 +17,6 @@ public class MainUniverseService {
     MainUniverseRepository mainUniverseRepository;
     @Autowired
     LocalUniverseService localUniverseService;
-
     @Autowired
     ShipRepository shipRepository;
 

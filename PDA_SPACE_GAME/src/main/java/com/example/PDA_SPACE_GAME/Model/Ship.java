@@ -28,4 +28,9 @@ public class Ship implements Serializable {
     private int mainCoordinatesX;
     private int mainCoordinatesY;
 
+    private int planetCoordinatesX;
+    private int planetCoordinatesY;
+
+    private long planetLandedId;
+
 }

@@ -14,9 +14,6 @@ public class PlanetRestController {
         this.planetService = planetService;
     }
 
-    @GetMapping("/planet/getPlanetMap/{planetId}")
-    public void getPlanet(@PathVariable ("planetId") long planetId){
-        planetService.getPlanetMap(planetId);
-    }
+
 
 }

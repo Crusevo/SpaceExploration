@@ -25,7 +25,7 @@ public class Planet implements Serializable {
     @Column(columnDefinition = "LONGBLOB")
     private String[][] planetMap = new String[10][10];
 
-
-
+    private int planetPositionX;
+    private int planetPositionY;
 
 }

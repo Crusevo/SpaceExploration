@@ -1,14 +1,20 @@
 package com.example.PDA_SPACE_GAME.Service;
 
 import com.example.PDA_SPACE_GAME.Model.MainUniverse;
+import com.example.PDA_SPACE_GAME.Model.Planet;
 import com.example.PDA_SPACE_GAME.Model.Ship;
 import com.example.PDA_SPACE_GAME.Model.LocalUniverse;
+import com.example.PDA_SPACE_GAME.PlanetUtility.PlanetMapView;
 import com.example.PDA_SPACE_GAME.Repository.MainUniverseRepository;
 import com.example.PDA_SPACE_GAME.Repository.ShipRepository;
 import com.example.PDA_SPACE_GAME.Repository.LocalUniverseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+
+
 
 @Service
 public class ShipService {
@@ -29,7 +35,7 @@ public class ShipService {
         if(shipById.getLocalCoordinatesX() == 0){
             clearPreviousLocalUniverse(shipById.getMainCoordinatesX(), shipById.getMainCoordinatesY(),shipById.getLocalCoordinatesX(),shipById.getLocalCoordinatesY());
 
-            shipById.setMainCoordinatesY(shipById.getMainCoordinatesX() - 1);
+            shipById.setMainCoordinatesX(shipById.getMainCoordinatesX() - 1);
             shipById.setLocalCoordinatesX(9);
 
         }else {
@@ -49,7 +55,7 @@ public class ShipService {
         if(shipById.getLocalCoordinatesX() == 9){
             clearPreviousLocalUniverse(shipById.getMainCoordinatesX(), shipById.getMainCoordinatesY(),shipById.getLocalCoordinatesX(),shipById.getLocalCoordinatesY());
 
-            shipById.setMainCoordinatesY(shipById.getMainCoordinatesX() + 1);
+            shipById.setMainCoordinatesX(shipById.getMainCoordinatesX() + 1);
             shipById.setLocalCoordinatesX(0);
 
         }else {
@@ -153,6 +159,43 @@ public class ShipService {
         mainUniverseRepository.saveAndFlush(mainUniverse);
 
     }
+
+    public boolean checkingIfYouCanLand(){
+
+        Ship shipById = shipRepository.findById(1L).orElseThrow();
+
+        MainUniverse mainUniverse = mainUniverseRepository.findById(1L).orElseThrow();
+        LocalUniverse[][] mainUniverseObjects = mainUniverse.getMainUniverseObjects();
+
+        LocalUniverse localUniverse = mainUniverseObjects[shipById.getMainCoordinatesX()][shipById.getMainCoordinatesY()];
+
+        Object[][] localUniverseObjects = localUniverse.getLocalUniverseObjects();
+
+            Object planetFromLocalUniverse =
+                    localUniverseObjects[shipById.getLocalCoordinatesX() + 1][shipById.getLocalCoordinatesY()] != null ?
+                    localUniverseObjects[shipById.getLocalCoordinatesX() + 1][shipById.getLocalCoordinatesY()] :
+                    localUniverseObjects[shipById.getLocalCoordinatesX() - 1][shipById.getLocalCoordinatesY()] != null ?
+                    localUniverseObjects[shipById.getLocalCoordinatesX() - 1][shipById.getLocalCoordinatesY()] :
+                    localUniverseObjects[shipById.getLocalCoordinatesX()][shipById.getLocalCoordinatesY() + 1] != null ?
+                    localUniverseObjects[shipById.getLocalCoordinatesX()][shipById.getLocalCoordinatesY() + 1] :
+                    localUniverseObjects[shipById.getLocalCoordinatesX()][shipById.getLocalCoordinatesY() - 1] != null ?
+                    localUniverseObjects[shipById.getLocalCoordinatesX()][shipById.getLocalCoordinatesY() - 1] : null;
+
+            if(planetFromLocalUniverse instanceof Planet){
+                PlanetMapView.mapView(((Planet) planetFromLocalUniverse).getPlanetMap());
+                shipById.setPlanetLandedId(((Planet) planetFromLocalUniverse).getPlanetId());
+                shipById.setPlanetCoordinatesX(5);
+                shipById.setPlanetCoordinatesY(5);
+
+                return true;
+            }else {
+                System.out.println("There is no planet to land");
+            }
+
+            return false;
+    }
+
+
 
 
 

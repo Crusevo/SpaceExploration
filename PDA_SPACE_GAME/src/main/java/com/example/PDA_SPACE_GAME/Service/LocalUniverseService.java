@@ -50,8 +50,6 @@ public class LocalUniverseService {
     }
 
 
-
-
     @Transactional
     public LocalUniverse createLocalUniverse() {
 
@@ -61,8 +59,11 @@ public class LocalUniverseService {
 
             for (int i = 0; i < 5; i++) {
 
-                Planet planet = planetService.createPlanet();
-                localUniverseObjects[random.nextInt(10)][random.nextInt(10)] = planet;
+                int planetPositionX = random.nextInt(10);
+                int planetPositionY = random.nextInt(10);
+
+                Planet planet = planetService.createPlanet(planetPositionX,planetPositionY);
+                localUniverseObjects[planetPositionX][planetPositionY] = planet;
 
             }
             localUniverseRepository.saveAndFlush(localUniverse);
