@@ -15,37 +15,27 @@ public class LocalUniverseRestController {
 
     @Autowired
     LocalUniverseService localUniverseService;
-
     @Autowired
     ShipRepository shipRepository;
 
-    @PostMapping("/universe/createUniverse/")
-    public void createUniverse(){
-        localUniverseService.createLocalUniverse();
-    }
-
-    @GetMapping("/universe/showUniverse/")
-    public String showUniverse(){
-        localUniverseService.showUniverse();
-
-        return "home";
-    }
-
 
     @GetMapping("/universe/cockpit/")
-    public String add(Model model){
+    public String getShipCockpit(Model model){
 
         List<String> localUniverse = localUniverseService.showUniverse();
 
         Ship ship = shipRepository.findById(1L).orElseThrow();
 
-
         int mainCoordinatesX = ship.getMainCoordinatesX();
         int mainCoordinatesY = ship.getMainCoordinatesY();
+        int localCoordinatesX = ship.getLocalCoordinatesX();
+        int localCoordinatesY = ship.getLocalCoordinatesY();
 
         model.addAttribute("universe", localUniverse);
         model.addAttribute("mainCoordinatesX",mainCoordinatesX);
         model.addAttribute("mainCoordinatesY",mainCoordinatesY);
+        model.addAttribute("localCoordinatesX",localCoordinatesX);
+        model.addAttribute("localCoordinatesY",localCoordinatesY);
 
         return "home";
     }

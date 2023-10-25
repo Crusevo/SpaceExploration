@@ -1,8 +1,7 @@
 package com.example.PDA_SPACE_GAME.RestController;
 
-import com.example.PDA_SPACE_GAME.PlanetUtility.PlanetMapView;
 import com.example.PDA_SPACE_GAME.Service.PlanetService;
-import com.example.PDA_SPACE_GAME.Service.ShipService;
+import com.example.PDA_SPACE_GAME.Service.ShipServiceInUniverse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,45 +11,43 @@ import org.springframework.web.bind.annotation.PostMapping;
 import java.util.List;
 
 @Controller
-public class ShipRestController {
+public class ShipInUniverseRestController {
 
     @Autowired
-    ShipService shipService;
-
+    ShipServiceInUniverse shipService;
     @Autowired
     PlanetService planetService;
 
-    @PostMapping("/moveShip/up/")
+    @PostMapping("/moveShipInUniverse/up/")
     public String moveShipUp(){
-        shipService.moveShipUp();
+        shipService.moveShipUpInUniverse();
 
         return "redirect:/universe/cockpit/";
     }
 
-    @PostMapping("/moveShip/down/")
+    @PostMapping("/moveShipInUniverse/down/")
     public String moveShipDown(){
-        shipService.moveShipDown();
+        shipService.moveShipDownInUniverse();
 
         return "redirect:/universe/cockpit/";
     }
 
-    @PostMapping("/moveShip/right/")
+    @PostMapping("/moveShipInUniverse/right/")
     public String moveShipRight(){
-        shipService.moveShipRight();
+        shipService.moveShipRightInUniverse();
 
         return "redirect:/universe/cockpit/";
     }
 
-    @PostMapping("/moveShip/left/")
+    @PostMapping("/moveShipInUniverse/left/")
     public String moveShipLeft(){
-        shipService.moveShipLeft();
+        shipService.moveShipLeftInUniverse();
 
         return "redirect:/universe/cockpit/";
     }
 
     @PostMapping("/ship/landOnPlanet/")
     public String landOnPlanet(Model model){
-
 
         if(
         shipService.checkingIfYouCanLand()){
@@ -60,9 +57,9 @@ public class ShipRestController {
 
             return "landerCockpit";
         }
-
         return "redirect:/universe/cockpit/";
-
     }
+
+
 
 }

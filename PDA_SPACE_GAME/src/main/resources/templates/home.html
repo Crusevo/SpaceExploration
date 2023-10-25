@@ -27,19 +27,19 @@ background-repeat: no-repeat;
 <p id="landOnPlanetText" style=" visibility: hidden; color: green; position: absolute; top: 775px; left: 1290px" >Land on planet</p>
 
 
-<form th:action="@{/moveShip/up/}" method="post">
+<form th:action="@{/moveShipInUniverse/up/}" method="post">
 <button id="up" type="submit" class="btn btn-dark" style="padding: 3px; position: absolute; color: green; top: 705px; left: 1070px" >⮝</button>
 </form>
 
-<form th:action="@{/moveShip/down/}" method="post">
+<form th:action="@{/moveShipInUniverse/down/}" method="post">
 <button id="down" type="submit" class="btn btn-dark" style="padding: 3px; position: absolute; color: green; top: 745px; left: 1070px">⮟</button>
 </form>
 
-<form th:action="@{/moveShip/left/}" method="post">
+<form th:action="@{/moveShipInUniverse/left/}" method="post">
 <button id="left" type="submit" class="btn btn-dark" style="padding: 3px; position: absolute; color: green; top: 725px; left: 1040px"  >⮜</button>
 </form>
 
-<form th:action="@{/moveShip/right/}" method="post">
+<form th:action="@{/moveShipInUniverse/right/}" method="post">
 <button id="right" type="submit" class="btn btn-dark" style="padding: 3px; position: absolute; color: green; top: 725px; left: 1100px" >⮞</button>
 </form>
 
@@ -56,8 +56,8 @@ background-repeat: no-repeat;
 
 <p id="mainCoordinatesX" style="color:green; position: absolute; top: 765px; left: 480px" th:text="main_coordinates_X....+${mainCoordinatesX}"></p>
 <p id="mainCoordinatesY" style="color:green; position: absolute; top: 785px; left: 480px" th:text="main_coordinates_Y....+${mainCoordinatesY}"></p>
-
-
+<p id="localCoordinatesX" style="color:green; position: absolute; top: 805px; left: 480px" th:text="local_coordinates_X....+${localCoordinatesX}"></p>
+<p id="localCoordinatesY" style="color:green; position: absolute; top: 825px; left: 480px" th:text="local_coordinates_Y....+${localCoordinatesY}"></p>
 
 <script>
 

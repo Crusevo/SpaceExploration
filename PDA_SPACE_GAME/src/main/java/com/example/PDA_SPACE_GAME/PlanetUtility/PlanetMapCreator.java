@@ -4,7 +4,8 @@ import java.util.Random;
 
 public abstract class PlanetMapCreator {
     private static final Random random = new Random();
-    private static final String[] planetObject= {"[C]","[Z]","[R]","[S]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]"};
+    private static final String[] planetObject= {"[A]","[P]","[A]","[P]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]"};
+                                               /** A - animal        P - plant */
 
     public static String [][] mapCreator(){
 

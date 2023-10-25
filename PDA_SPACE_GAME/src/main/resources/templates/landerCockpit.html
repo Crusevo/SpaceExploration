@@ -9,8 +9,9 @@
 
 <style>
 body{
-background-image: url('https://scontent.fktw1-1.fna.fbcdn.net/v/t1.15752-9/369042962_864866598317291_8284957010836752162_n.png?_nc_cat=101&ccb=1-7&_nc_sid=ae9488&_nc_ohc=W-5_DS8VHtkAX-wWIkR&_nc_ht=scontent.fktw1-1.fna&oh=03_AdTNkqaL8ItWv6k05vNvFIzzqT8fgPcYdf175EaQAsm2qA&oe=654A5E1E');
+background-image: url("https://scontent.fktw1-1.fna.fbcdn.net/v/t1.15752-9/380107829_1013793886552383_5709514949136883497_n.png?_nc_cat=105&ccb=1-7&_nc_sid=8cd0a2&_nc_ohc=4JUxkEhbpxoAX-LJcCk&_nc_ht=scontent.fktw1-1.fna&oh=03_AdR20u6BqdX3YqE0dHTkhnXKkySrXx5KLVY8vREkQnM4Pw&oe=6560A485");
 background-repeat: no-repeat;
+
 }
 </style>
 </head>
@@ -18,7 +19,61 @@ background-repeat: no-repeat;
 
 
 <body>
-<p id="a0" style="color:green; font-family: Times New Roman; font-size: 18px; rotate: -0deg; position: absolute; top: 705px; left: 1450px" th:text="${planetMap.get(0)}"></p>
+
+<form th:action="@{/moveShipInPlanet/up/}" method="post">
+    <button id="up" type="submit" class="btn btn-dark" style="padding: 3px; position: absolute; color: GoldenRod; top: 325px; left: 730px" >⮝</button>
+</form>
+
+<form th:action="@{/moveShipInPlanet/down/}" method="post">
+    <button id="down" type="submit" class="btn btn-dark" style="padding: 3px; position: absolute; color: GoldenRod; top: 375px; left: 730px" >⮟</button>
+</form>
+
+<form th:action="@{/moveShipInPlanet/left/}" method="post">
+    <button id="left" type="submit" class="btn btn-dark" style="padding: 3px; position: absolute; color: GoldenRod; top: 350px; left: 690px" >⮜</button>
+</form>
+
+<form th:action="@{/moveShipInPlanet/right/}" method="post">
+    <button id="right" type="submit" class="btn btn-dark" style="padding: 3px; position: absolute; color: GoldenRod; top: 350px; left: 770px" >⮞</button>
+</form>
+
+<form th:action="@{/planet/startFromPlanet/}" method="post">
+    <button id="startFromPlanet" type="submit" class="btn btn-dark" style="opacity: 0; padding: 3px; position: absolute; color: red; top: 770px; left: 1172px" >⮞</button>
+</form>
+<p id="startFromPlanetText" style=" visibility: hidden; color: GoldenRod; position: absolute; top: 741px; left: 1030px" >Start from planet</p>
+
+
+<p id="a0" style="color:GoldenRod; font-family: Times New Roman; font-size: 13px; rotate: -0deg; position: absolute; top: 545px; left: 777px" th:text="${planetMap.get(0)}"></p>
+<p id="a1" style="color:GoldenRod; font-family: Times New Roman; font-size: 13px; rotate: -0deg; position: absolute; top: 560px; left: 777px" th:text="${planetMap.get(1)}"></p>
+<p id="a2" style="color:GoldenRod; font-family: Times New Roman; font-size: 13px; rotate: -0deg; position: absolute; top: 575px; left: 777px" th:text="${planetMap.get(2)}"></p>
+<p id="a3" style="color:GoldenRod; font-family: Times New Roman; font-size: 13px; rotate: -0deg; position: absolute; top: 590px; left: 777px" th:text="${planetMap.get(3)}"></p>
+<p id="a4" style="color:GoldenRod; font-family: Times New Roman; font-size: 13px; rotate: -0deg; position: absolute; top: 605px; left: 777px" th:text="${planetMap.get(4)}"></p>
+<p id="a5" style="color:GoldenRod; font-family: Times New Roman; font-size: 13px; rotate: -0deg; position: absolute; top: 620px; left: 777px" th:text="${planetMap.get(5)}"></p>
+<p id="a6" style="color:GoldenRod; font-family: Times New Roman; font-size: 13px; rotate: -0deg; position: absolute; top: 635px; left: 777px" th:text="${planetMap.get(6)}"></p>
+<p id="a7" style="color:GoldenRod; font-family: Times New Roman; font-size: 13px; rotate: -0deg; position: absolute; top: 650px; left: 777px" th:text="${planetMap.get(7)}"></p>
+<p id="a8" style="color:GoldenRod; font-family: Times New Roman; font-size: 13px; rotate: -0deg; position: absolute; top: 665px; left: 777px" th:text="${planetMap.get(8)}"></p>
+<p id="a9" style="color:GoldenRod; font-family: Times New Roman; font-size: 13px; rotate: -0deg; position: absolute; top: 680px; left: 777px" th:text="${planetMap.get(9)}"></p>
+
+
+<script>
+
+    document.getElementById("startFromPlanet").addEventListener("mouseout", function hide(){
+    document.getElementById("startFromPlanetText").style.visibility = "hidden";
+
+    });
+
+    document.getElementById("startFromPlanet").addEventListener("mouseover", function hide(){
+    document.getElementById("startFromPlanetText").style.visibility = "visible";
+
+    });
+
+</script>
+
+
+
+
+
+
+
 
 
 </body>

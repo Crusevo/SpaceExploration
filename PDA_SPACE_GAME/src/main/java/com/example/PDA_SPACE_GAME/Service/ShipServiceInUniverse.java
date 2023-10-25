@@ -6,29 +6,28 @@ import com.example.PDA_SPACE_GAME.Model.Ship;
 import com.example.PDA_SPACE_GAME.Model.LocalUniverse;
 import com.example.PDA_SPACE_GAME.PlanetUtility.PlanetMapView;
 import com.example.PDA_SPACE_GAME.Repository.MainUniverseRepository;
+import com.example.PDA_SPACE_GAME.Repository.PlanetRepository;
 import com.example.PDA_SPACE_GAME.Repository.ShipRepository;
 import com.example.PDA_SPACE_GAME.Repository.LocalUniverseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
-
-
 
 @Service
-public class ShipService {
+public class ShipServiceInUniverse {
 
     @Autowired
     LocalUniverseRepository localUniverseRepository;
     @Autowired
     ShipRepository shipRepository;
-
     @Autowired
     MainUniverseRepository mainUniverseRepository;
+    @Autowired
+    PlanetRepository planetRepository;
 
     @Transactional
-    public void moveShipUp() {
+    public void moveShipUpInUniverse() {
 
         Ship shipById = shipRepository.findById(1L).orElseThrow();
 
@@ -40,14 +39,14 @@ public class ShipService {
 
         }else {
 
-            moveShip(-1, 0);
+            moveShipInUniverse(-1, 0);
 
         }
 
     }
 
     @Transactional
-    public void moveShipDown() {
+    public void moveShipDownInUniverse() {
 
 
         Ship shipById = shipRepository.findById(1L).orElseThrow();
@@ -60,13 +59,13 @@ public class ShipService {
 
         }else {
 
-            moveShip(1, 0);
+            moveShipInUniverse(1, 0);
 
         }
     }
 
     @Transactional
-    public void moveShipRight() {
+    public void moveShipRightInUniverse() {
 
         Ship shipById = shipRepository.findById(1L).orElseThrow();
 
@@ -78,13 +77,13 @@ public class ShipService {
 
         }else {
 
-                moveShip(0, 1);
+                moveShipInUniverse(0, 1);
 
         }
     }
 
     @Transactional
-    public void moveShipLeft() {
+    public void moveShipLeftInUniverse() {
 
         Ship shipById = shipRepository.findById(1L).orElseThrow();
 
@@ -97,11 +96,11 @@ public class ShipService {
                 shipById.setLocalCoordinatesY(9);
 
         }else {
-                moveShip(0, -1);
+                moveShipInUniverse(0, -1);
         }
     }
 
-    public void moveShip(int x, int y){
+    public void moveShipInUniverse(int x, int y){
 
         Ship shipById = shipRepository.findById(1L).orElseThrow();
 
@@ -110,12 +109,12 @@ public class ShipService {
 
         LocalUniverse localUniverse = mainUniverseObjects[shipById.getMainCoordinatesX()][shipById.getMainCoordinatesY()];
 
-        checkingIfAnyObjectIsAheadYou(shipById,localUniverse,x,y);
+        checkingIfAnyObjectIsAheadYouInUniverse(shipById,localUniverse,x,y);
 
     }
 
 
-    public void checkingIfAnyObjectIsAheadYou(Ship shipById, LocalUniverse localUniverse,int x, int y){
+    public void checkingIfAnyObjectIsAheadYouInUniverse(Ship shipById, LocalUniverse localUniverse, int x, int y){
 
         Object[][] localUniverseObjects = localUniverse.getLocalUniverseObjects();
 
@@ -141,7 +140,6 @@ public class ShipService {
         }else {
             System.out.println("Planet ahead you!");
         }
-
     }
 
     public void clearPreviousLocalUniverse(int shipMainCoordinatesX, int shipMainCoordinatesY,int shipLocalCoordinatesX,int shipLocalCoordinatesY){
@@ -160,6 +158,7 @@ public class ShipService {
 
     }
 
+    @Transactional
     public boolean checkingIfYouCanLand(){
 
         Ship shipById = shipRepository.findById(1L).orElseThrow();
@@ -187,6 +186,10 @@ public class ShipService {
                 shipById.setPlanetCoordinatesX(5);
                 shipById.setPlanetCoordinatesY(5);
 
+                ((Planet) planetFromLocalUniverse).getPlanetMap()[5][5] = "[X]";
+
+                planetRepository.saveAndFlush( (Planet) planetFromLocalUniverse);
+
                 return true;
             }else {
                 System.out.println("There is no planet to land");
@@ -194,9 +197,6 @@ public class ShipService {
 
             return false;
     }
-
-
-
 
 
 }

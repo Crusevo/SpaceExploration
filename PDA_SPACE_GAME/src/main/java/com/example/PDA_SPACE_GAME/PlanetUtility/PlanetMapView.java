@@ -1,10 +1,12 @@
 package com.example.PDA_SPACE_GAME.PlanetUtility;
 
+import com.example.PDA_SPACE_GAME.Model.Ship;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public abstract class PlanetMapView {
-    public static List<String> mapView(String[][] planetMap){
+    public static List<String> mapView(Object[][] planetMap){
 
         List<String> stringList = new ArrayList<>();
 
@@ -18,9 +20,13 @@ public abstract class PlanetMapView {
 
             for (int j = 0; j < 10; j++){
 
-                System.out.print(planetMap[i][j]);
-                stringBuilder.append(planetMap[i][j]);
-
+                if(!planetMap[i][j].equals("[ ]")) {
+                    System.out.print(planetMap[i][j]);
+                    stringBuilder.append(planetMap[i][j]);
+                }else{
+                    System.out.print("[ ]");
+                   stringBuilder.append("[...]");
+                }
             }
 
             stringList.add(stringBuilder.toString());
