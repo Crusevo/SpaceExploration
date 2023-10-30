@@ -7,3 +7,6 @@
 
 **Lander cockpit!**
 ![landercockpittt](https://github.com/Crusevo/SpaceExploration/assets/121226050/240d1b02-2db4-419a-89a3-ba8a5ef853ca)
+
+**Space travel animation!**
+![space travel](https://github.com/Crusevo/SpaceExploration/assets/121226050/41cbc3ae-b6b1-41ce-8f13-bad9ea16e0b4)
