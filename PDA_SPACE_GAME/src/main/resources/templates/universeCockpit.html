@@ -21,6 +21,7 @@ background-repeat: no-repeat;
 
 <body>
 
+
 <form th:action="@{/ship/landOnPlanet/}" method="post">
 <button id="buttonLandOnPlanet" style="opacity: 0; position: absolute; top: 775px; left: 1195px"> Try it</button>
 </form>
@@ -43,6 +44,15 @@ background-repeat: no-repeat;
 <button id="right" type="submit" class="btn btn-dark" style="padding: 3px; position: absolute; color: green; top: 725px; left: 1100px" >⮞</button>
 </form>
 
+<img src="https://scontent.fktw4-1.fna.fbcdn.net/v/t1.15752-9/380113582_641923754634249_2634077856202251985_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=8cd0a2&_nc_ohc=n-QUOyoeQd0AX-MPNKh&_nc_ht=scontent.fktw4-1.fna&oh=03_AdRy9W-DNaJqXLkqm7cttNowGJtwsJKeA0MjFlpfTyIz2w&oe=6560D23E" alt="gold" style="width:40px; height:40px; position: absolute; top: 800px; left: 1282px">
+<img src="https://scontent.fktw4-1.fna.fbcdn.net/v/t1.15752-9/368102139_3245251575777837_8553938238323291076_n.webp?_nc_cat=108&ccb=1-7&_nc_sid=8cd0a2&_nc_ohc=0AqAEG6ZzTMAX8tDYJN&_nc_ht=scontent.fktw4-1.fna&oh=03_AdReiSAAwNfk8f0f0biAdsOgmaAK5P4NEnRVQUQKTEGd3w&oe=6560C144" alt="silver" style="width:35px; height:35px; position: absolute; top: 850px; left: 1290px">
+<img src="https://scontent.xx.fbcdn.net/v/t1.15752-9/370200935_724122923076691_96722167495728274_n.jpg?stp=dst-jpg_p206x206&_nc_cat=111&ccb=1-7&_nc_sid=510075&_nc_ohc=A0OFpkdjSyQAX88zBGB&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=03_AdSiop1a5FRSfR7rh62UJsujldGpfloYo3XjEvJAvXLhRA&oe=65676FDB" alt="iron" style="width:40px; height:40px; position: absolute; top: 850px; left: 1380px">
+
+<p id="goldInShip" style="color:green; font-size: 25px; position: absolute; top: 800px; left: 1328px" th:text="${goldInShip}"></p>
+<p id="silverInShip" style="color:green; font-size: 25px; position: absolute; top: 846px; left: 1332px" th:text="${silverInShip}"></p>
+<p id="ironInShip" style="color:green; font-size: 25px; position: absolute; top: 846px; left: 1428px" th:text="${ironInShip}"></p>
+
+
 <p id="a0" style="color:green; font-family: Times New Roman; font-size: 15px; rotate: -0deg; position: absolute; top: 705px; left: 810px" th:text="${universe.get(0)}"></p>
 <p id="a1" style="color:green; font-family: Times New Roman; font-size: 15px; rotate: -0deg; position: absolute; top: 720px; left: 810px" th:text="${universe.get(1)}"></p>
 <p id="a2" style="color:green; font-family: Times New Roman; font-size: 15px; rotate: -0deg; position: absolute; top: 735px; left: 810px" th:text="${universe.get(2)}"></p>
@@ -58,6 +68,9 @@ background-repeat: no-repeat;
 <p id="mainCoordinatesY" style="color:green; position: absolute; top: 785px; left: 480px" th:text="main_coordinates_Y....+${mainCoordinatesY}"></p>
 <p id="localCoordinatesX" style="color:green; position: absolute; top: 805px; left: 480px" th:text="local_coordinates_X....+${localCoordinatesX}"></p>
 <p id="localCoordinatesY" style="color:green; position: absolute; top: 825px; left: 480px" th:text="local_coordinates_Y....+${localCoordinatesY}"></p>
+
+
+
 
 <script>
 

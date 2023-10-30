@@ -22,6 +22,10 @@ public class Ship implements Serializable {
 
     private String shipName;
 
+    private int goldInShip = 0;
+    private int silverInShip = 0;
+    private int ironInShip = 0;
+
     private int localCoordinatesX;
     private int localCoordinatesY;
 

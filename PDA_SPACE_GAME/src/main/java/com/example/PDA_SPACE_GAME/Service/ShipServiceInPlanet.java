@@ -57,11 +57,12 @@ public class ShipServiceInPlanet {
 
             Planet planet = planetRepository.findById(ship.getPlanetLandedId()).orElseThrow();
             Object[][] planetMap = planet.getPlanetMap();
-
             planetMap[ship.getPlanetCoordinatesX()][ship.getPlanetCoordinatesY()] = "[ ]";
 
             ship.setPlanetCoordinatesX(ship.getPlanetCoordinatesX() + x);
             ship.setPlanetCoordinatesY(ship.getPlanetCoordinatesY() + y);
+
+            collectingMaterials(planetMap,ship);
 
             planetMap[ship.getPlanetCoordinatesX()][ship.getPlanetCoordinatesY()] = "[X]";
 
@@ -93,7 +94,30 @@ public class ShipServiceInPlanet {
         planet.setPlanetMap(planetMap);
         planet.setPlanetVersion(planet.getPlanetVersion() + 1);
 
+        ship.setPlanetLandedId(0);
+
+        shipRepository.saveAndFlush(ship);
         planetRepository.saveAndFlush(planet);
+
+    }
+
+    @Transactional
+    public void collectingMaterials(Object[][] planetMap,Ship ship){
+
+        int planetCoordinatesX = ship.getPlanetCoordinatesX();
+        int planetCoordinatesY = ship.getPlanetCoordinatesY();
+
+        if (planetMap[planetCoordinatesX][planetCoordinatesY].equals("[G]")){
+            ship.setGoldInShip(ship.getGoldInShip() + 1);
+        }
+
+        if (planetMap[planetCoordinatesX][planetCoordinatesY].equals("[S]")){
+            ship.setSilverInShip(ship.getSilverInShip() + 1);
+        }
+
+        if (planetMap[planetCoordinatesX][planetCoordinatesY].equals("[I]")){
+            ship.setIronInShip(ship.getIronInShip() + 1);
+        }
 
     }
 

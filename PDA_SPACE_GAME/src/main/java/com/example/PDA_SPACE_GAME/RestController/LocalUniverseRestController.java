@@ -30,16 +30,32 @@ public class LocalUniverseRestController {
         int mainCoordinatesY = ship.getMainCoordinatesY();
         int localCoordinatesX = ship.getLocalCoordinatesX();
         int localCoordinatesY = ship.getLocalCoordinatesY();
+        int goldInShip = ship.getGoldInShip();
+        int silverInShip = ship.getSilverInShip();
+        int ironInShip = ship.getIronInShip();
+
 
         model.addAttribute("universe", localUniverse);
         model.addAttribute("mainCoordinatesX",mainCoordinatesX);
         model.addAttribute("mainCoordinatesY",mainCoordinatesY);
         model.addAttribute("localCoordinatesX",localCoordinatesX);
         model.addAttribute("localCoordinatesY",localCoordinatesY);
+        model.addAttribute("goldInShip",goldInShip);
+        model.addAttribute("silverInShip",silverInShip);
+        model.addAttribute("ironInShip",ironInShip);
 
-        return "home";
+        return "universeCockpit";
     }
 
+    @GetMapping("/universe/spaceTravel/")
+    public String spaceTravel(Model model){
+
+        int count = 10;
+
+        model.addAttribute("count", count);
+
+        return "spaceTravel";
+    }
 
 
 

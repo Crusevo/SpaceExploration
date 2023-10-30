@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 @Controller
 public class ShipInUniverseRestController {
@@ -19,31 +20,32 @@ public class ShipInUniverseRestController {
     PlanetService planetService;
 
     @PostMapping("/moveShipInUniverse/up/")
-    public String moveShipUp(){
+    public String moveShipUp() throws InterruptedException {
         shipService.moveShipUpInUniverse();
 
-        return "redirect:/universe/cockpit/";
+        return "redirect:/universe/spaceTravel/";
     }
+
 
     @PostMapping("/moveShipInUniverse/down/")
     public String moveShipDown(){
         shipService.moveShipDownInUniverse();
 
-        return "redirect:/universe/cockpit/";
+        return "redirect:/universe/spaceTravel/";
     }
 
     @PostMapping("/moveShipInUniverse/right/")
     public String moveShipRight(){
         shipService.moveShipRightInUniverse();
 
-        return "redirect:/universe/cockpit/";
+        return "redirect:/universe/spaceTravel/";
     }
 
     @PostMapping("/moveShipInUniverse/left/")
     public String moveShipLeft(){
         shipService.moveShipLeftInUniverse();
 
-        return "redirect:/universe/cockpit/";
+        return "redirect:/universe/spaceTravel/";
     }
 
     @PostMapping("/ship/landOnPlanet/")

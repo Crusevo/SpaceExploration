@@ -17,6 +17,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @Service
@@ -45,7 +46,7 @@ public class PlanetService {
 
 
     @Transactional
-    public List<String> showPlanetMap(){
+    public List<String> showPlanetMap() {
 
         Ship ship = shipRepository.findById(1L).orElseThrow();
         long planetLandedId = ship.getPlanetLandedId();

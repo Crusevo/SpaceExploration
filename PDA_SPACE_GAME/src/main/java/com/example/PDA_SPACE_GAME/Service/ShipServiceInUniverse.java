@@ -96,8 +96,9 @@ public class ShipServiceInUniverse {
                 shipById.setLocalCoordinatesY(9);
 
         }else {
-                moveShipInUniverse(0, -1);
+                 moveShipInUniverse(0, -1);
         }
+
     }
 
     public void moveShipInUniverse(int x, int y){
@@ -139,6 +140,7 @@ public class ShipServiceInUniverse {
 
         }else {
             System.out.println("Planet ahead you!");
+
         }
     }
 
