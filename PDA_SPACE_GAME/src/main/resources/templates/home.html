@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+
+    <style>
+        body{
+        background-image: url("https://images.wallpaperscraft.com/image/single/cosmonaut_space_suit_skull_130424_1920x1080.jpg");
+        background-repeat: no-repeat;
+
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
+.App {
+  text-align: center;
+  height: 100%;
+}
+
+.lost {
+  letter-spacing: 2px;
+  color: white;
+  margin: 20px auto;
+  width: 100%;
+  font-size: 100px;
+  font-family: "Permanent Marker";
+  animation: bloody 4s ease infinite alternate;
+  -webkit-animation: bloody 4s ease infinite alternate;
+  -moz-animation: bloody 4s ease infinite alternate;
+  -o-animation: bloody 4s ease infinite alternate;
+  color: white;
+  padding-top: 100px;
+  margin-bottom: 0;
+  padding-bottom: 0;
+  margin: auto;
+}
+@keyframes bloody {
+  0% {
+    text-shadow: 0px 1px 3px #c8102e;
+    letter-spacing: -0.025em;
+  }
+  100% {
+    text-shadow: 0px 5px 3px #c8102e, 0px 10px 3px #c8102e, 0px 15px 3px #c8102e,
+      0px 20px 3px #c8102e, 0px 25px 3px #c8102e, 0px 30px 3px #c8102e,
+      0px 35px 3px #c8102e, 0px 40px 3px #c8102e, 0px 45px 3px #c8102e,
+  }
+}
+.note {
+  color: #c8102e;
+  font-size: 80px;
+  margin: 0 auto;
+  font-family: "Permanent Marker";
+  animation: grow 5s ease infinite alternate;
+  -webkit-animation: grow 5s ease infinite alternate;
+  -moz-animation: grow 5s ease infinite alternate;
+  -o-animation: grow 5s ease infinite alternate;
+}
+@keyframes grow {
+  0% {
+        transform: scale(1, 1);
+  }
+  100% {
+        transform: scale(1, 1.25);
+  }
+}
+.container {
+  position: relative;
+  margin: 25px auto;
+  height: 400px;
+  width: 350px;
+}
+.blooddrop {
+  position: relative;
+  width: 11px;
+  height: 11px;
+  top: 0px;
+  margin: 0;
+  background-color: #c8102e;
+  border-radius: 50%;
+  animation: drip 3s cubic-bezier(1,0,.91,.19) infinite ;
+    -webkit-animation: drip 3s cubic-bezier(1,0,.91,.19) infinite;
+    -moz-animation: drip 3s cubic-bezier(1,0,.91,.19) infinite;
+    -o-animation: drip 3s cubic-bezier(1,0,.91,.19) infinite;
+}
+.blooddrop:before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 23px solid #c8102e;
+  top: -20px;
+  left: 1px;
+}
+.blooddrop:nth-of-type(1) {
+    position: absolute;
+    left: 20px;
+    top: 0px;
+    animation-delay: 1s;
+    animation-iteration-count: infinite;
+    animation-fill-mode: backwards;
+}
+.blooddrop:nth-of-type(2) {
+    position: absolute;
+    left: 53px;
+    top: 0px;
+    animation-delay: 3s;
+    animation-iteration-count: infinite;
+    animation-fill-mode: backwards;
+}
+.blooddrop:nth-of-type(3) {
+    position: absolute;
+    left: 80px;
+    top: 0px;
+    animation-delay: 4s;
+    animation-iteration-count: infinite;
+    animation-fill-mode: backwards;
+}
+.blooddrop:nth-of-type(4) {
+    position: absolute;
+    left: 15px;
+    top: 0px;
+    animation-delay: 5.5s;
+    animation-iteration-count: infinite;
+    animation-fill-mode: backwards;
+}
+.blooddrop:nth-of-type(5) {
+    position: absolute;
+    left: 130px;
+    top: 0px;
+    animation-delay: 4.5s;
+    animation-iteration-count: infinite;
+    animation-fill-mode: backwards;
+}
+.blooddrop:nth-of-type(6) {
+    position: absolute;
+    left: 172px;
+    top: 0px;
+    animation-delay: 3.2s;
+    animation-iteration-count: infinite;
+    animation-fill-mode: backwards;
+}
+.blooddrop:nth-of-type(7) {
+    position: absolute;
+    left: 222px;
+    top: 0px;
+    animation-delay: 4.8s;
+    animation-iteration-count: infinite;
+    animation-fill-mode: backwards;
+}
+.blooddrop:nth-of-type(8) {
+    position: absolute;
+    left: 245px;
+    top: 0px;
+    animation-delay: 2s;
+    animation-iteration-count: infinite;
+    animation-fill-mode: backwards;
+}
+.blooddrop:nth-of-type(9) {
+    position: absolute;
+    left: 280px;
+    top: 0px;
+    animation-delay: 1s;
+    animation-iteration-count: infinite;
+    animation-fill-mode: backwards;
+}
+.blooddrop:nth-of-type(10) {
+    position: absolute;
+    left: 300px;
+    top: 65px;
+    animation-delay: 2.2s;
+    animation-iteration-count: infinite;
+    animation-fill-mode: backwards;
+}
+@keyframes drip {
+  0% { top: 70px; }
+  100% { top: 600px; }
+}
+
+
+
+  #myButton {
+	box-shadow: 3px 3px 0px 0px #000000;
+	background:linear-gradient(to bottom, #c62d1f 5%, #fc1100 100%);
+	background-color:#c62d1f;
+	border-radius:36px;
+	border:2px solid #030101;
+	display:inline-block;
+	cursor:pointer;
+	color: Black;
+	font-family:Arial;
+	font-size:15px;
+	padding:12px 41px;
+	text-decoration:none;
+	text-shadow:0px 2px 50px #e61c0e;
+}
+#myButton:hover {
+	background:linear-gradient(to bottom, #fc1100 5%, #c62d1f 100%);
+	background-color:#fc1100;
+}
+#myButton:active {
+	position:relative;
+	top:1px;
+}
+
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="App" id="a1">
+    <h1 class="lost" >START GAME</h1>
+    <div class="container">
+        <h2 class="note">Click button!</h2>
+        <section>
+            <div class='blooddrop'></div>
+            <div class='blooddrop'></div>
+            <div class='blooddrop'></div>
+            <div class='blooddrop'></div>
+            <div class='blooddrop'></div>
+            <div class='blooddrop'></div>
+            <div class='blooddrop'></div>
+            <div class='blooddrop'></div>
+            <div class='blooddrop'></div>
+            <div class='blooddrop'></div>
+        </section>
+    </div>
+</div>
+
+<form th:action="@{/universe/home/}" method="post">
+    <button id="myButton" type="submit" class="btn btn-dark" style="position: absolute;  top: 55%; left: 46%" >Start game</button>
+</form>
+
+
+<audio id="myAudio" controls style = "visibility: hidden; opacity: 0" loop="loop">
+    <source src="https://incompetech.com/music/royalty-free/mp3-royaltyfree/SCP-x7x.mp3" type="audio/mpeg">
+</audio>
+<script>
+    document.getElementById("a1").addEventListener("mousemove", function() {
+      var audio = document.getElementById("myAudio");
+      audio.play();
+    });
+</script>
+
+
+
+</body>
+</html>

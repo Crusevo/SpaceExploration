@@ -19,6 +19,21 @@ public class LocalUniverseRestController {
     ShipRepository shipRepository;
 
 
+    @GetMapping("/universe/home/")
+    public String homePage(Model model){
+
+        return "home";
+    }
+
+    @PostMapping("/universe/home/")
+    public String startGame(){
+
+
+        return "redirect:/universe/cockpit/";
+    }
+
+
+
     @GetMapping("/universe/cockpit/")
     public String getShipCockpit(Model model){
 

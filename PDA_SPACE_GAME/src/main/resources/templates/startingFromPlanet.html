@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-    <audio src="https://incompetech.com/music/royalty-free/mp3-royaltyfree/SCP-x3x.mp3" autoplay="autoplay" loop="loop"></audio>
+    <audio src="https://incompetech.com/music/royalty-free/mp3-royaltyfree/SCP-x2x.mp3" loop autoplay></audio>
     <meta charset="UTF-8">
     <title>Landing On Planet</title>
 
     <style>
         body{
-        background-image: url("https://www.tapeteos.pl/data/media/448/big/rozne_2880x1800_002_kosmos__resized_1920x1080.jpg");
+        background-image: url("https://images.wallpaperscraft.com/image/single/space_planet_ship_73877_1920x1080.jpg");
         background-repeat: no-repeat;
         }
 
@@ -17,7 +17,7 @@
   font-weight: bold;
   color: Silver;
 }
-</style>
+    </style>
 
 
 
@@ -27,7 +27,7 @@
 <div id="countdown-timer">
     <span id="seconds">00</span>
 </div>
-<p id="countdown-timerParagraph" style="color: Silver; font-size: 35px; position: absolute; top: 5px; left: 40%">Time to landing in "second"</p>
+<p id="countdown-timerParagraph" style="color: Silver; font-size: 35px; position: absolute; top: 5px; left: 40%">Reaching orbit in "second"</p>
 
 
 
@@ -35,7 +35,7 @@
     var countOnPlanet = [[${countOnPlanet}]];
     function redirectAfterDelayOnPlanet() {
         setTimeout(function () {
-            window.location.href = '/planet/landerCockpit';
+            window.location.href = '/universe/cockpit/';
         }, countOnPlanet);
     }
 </script>

@@ -60,7 +60,22 @@ public class ShipInPlanetRestController {
 
         shipServiceInPlanet.startFromPlanet();
 
-        return "redirect:/universe/cockpit/";
+        return "redirect:/planet/startingFromPlanet";
+    }
+
+    @GetMapping("/planet/startingFromPlanet")
+    public String startingFromPlanet(Model model){
+
+
+        Ship ship = shipRepository.findById(1L).orElseThrow();
+        int landerEngineLevel = ship.getLanderEngineLevel();
+
+        int countOnPlanet = 30000 / landerEngineLevel;
+
+        model.addAttribute("countOnPlanet", countOnPlanet);
+
+        return "startingFromPlanet";
+
     }
 
 
@@ -90,6 +105,8 @@ public class ShipInPlanetRestController {
         return "landingOnPlanet";
 
     }
+
+
 
 
 
