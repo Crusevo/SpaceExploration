@@ -10,3 +10,6 @@
 
 **Space travel animation!**
 ![space travel](https://github.com/Crusevo/SpaceExploration/assets/121226050/41cbc3ae-b6b1-41ce-8f13-bad9ea16e0b4)
+
+**Ladning image**
+![843e62a83431749ed5af76f949aa5b02](https://github.com/Crusevo/SpaceExploration/assets/121226050/2a03717b-3238-4867-95e6-e2271e7a81b0)
