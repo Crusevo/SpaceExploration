@@ -57,7 +57,9 @@ public class ShipInUniverseRestController {
 
             model.addAttribute("planetMap", planetMap);
 
-            return "landerCockpit";
+            return "redirect:/planet/landingOnPlanet";
+
+
         }
         return "redirect:/universe/cockpit/";
     }

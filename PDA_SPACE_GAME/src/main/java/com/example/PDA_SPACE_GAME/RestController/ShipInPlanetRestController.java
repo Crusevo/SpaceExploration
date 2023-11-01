@@ -1,5 +1,7 @@
 package com.example.PDA_SPACE_GAME.RestController;
 
+import com.example.PDA_SPACE_GAME.Model.Ship;
+import com.example.PDA_SPACE_GAME.Repository.ShipRepository;
 import com.example.PDA_SPACE_GAME.Service.PlanetService;
 import com.example.PDA_SPACE_GAME.Service.ShipServiceInPlanet;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +19,9 @@ public class ShipInPlanetRestController {
     ShipServiceInPlanet shipServiceInPlanet;
     @Autowired
     PlanetService planetService;
+
+    @Autowired
+    ShipRepository shipRepository;
 
     @PostMapping("/moveShipInPlanet/up/")
     public String moveShipUp(){
@@ -68,6 +73,21 @@ public class ShipInPlanetRestController {
         model.addAttribute("planetMap", planetMap);
 
         return "landerCockpit";
+
+    }
+
+    @GetMapping("/planet/landingOnPlanet")
+    public String landingOnPlanet(Model model){
+
+
+        Ship ship = shipRepository.findById(1L).orElseThrow();
+        int landerEngineLevel = ship.getLanderEngineLevel();
+
+        int countOnPlanet = 30000 / landerEngineLevel;
+
+        model.addAttribute("countOnPlanet", countOnPlanet);
+
+        return "landingOnPlanet";
 
     }
 

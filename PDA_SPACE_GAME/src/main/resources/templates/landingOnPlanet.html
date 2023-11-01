@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <audio src="https://incompetech.com/music/royalty-free/mp3-royaltyfree/SCP-x3x.mp3" loop autoplay></audio>
+    <meta charset="UTF-8">
+    <title>Landing On Planet</title>
+
+    <style>
+        body{
+        background-image: url("https://www.tapeteos.pl/data/media/448/big/rozne_2880x1800_002_kosmos__resized_1920x1080.jpg");
+        background-repeat: no-repeat;
+        }
+
+#countdown-timer {
+  font-size: 35px;
+  text-align: center;
+  font-weight: bold;
+  color: Silver;
+}
+</style>
+
+
+
+</head>
+<body onload="redirectAfterDelayOnPlanet()">
+
+<div id="countdown-timer">
+    <span id="seconds">00</span>
+</div>
+<p id="countdown-timerParagraph" style="color: Silver; font-size: 35px; position: absolute; top: 5px; left: 40%">Time to landing in "second"</p>
+
+
+
+<script th:inline="javascript">
+    var countOnPlanet = [[${countOnPlanet}]];
+    function redirectAfterDelayOnPlanet() {
+        setTimeout(function () {
+            window.location.href = '/planet/landerCockpit';
+        }, countOnPlanet);
+    }
+</script>
+
+<p th:text="${countOnPlanet}" style=" visibility: hidden"></p>
+
+
+
+<script th:inline="javascript">
+    document.addEventListener("DOMContentLoaded", function() {
+     const secondsElement = document.getElementById("seconds");
+     let remainingSeconds = [[${countOnPlanet}]] / 1000; // Change this to your desired countdown duration in seconds
+
+     function updateCountdown() {
+       if (remainingSeconds <= 0) {
+         secondsElement.textContent = "00";
+       } else {
+         secondsElement.textContent = remainingSeconds.toString().padStart(2, "0");
+         remainingSeconds--;
+       }
+     }
+
+     updateCountdown();
+     setInterval(updateCountdown, 1000);
+   });
+</script>
+
+
+</body>
+</html>

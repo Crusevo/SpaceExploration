@@ -50,7 +50,10 @@ public class LocalUniverseRestController {
     @GetMapping("/universe/spaceTravel/")
     public String spaceTravel(Model model){
 
-        int count = 10;
+        Ship ship = shipRepository.findById(1L).orElseThrow();
+        int interstellarEngineLevel = ship.getInterstellarEngineLevel();
+
+        int count = 30000 / interstellarEngineLevel;
 
         model.addAttribute("count", count);
 
