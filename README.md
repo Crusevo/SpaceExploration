@@ -2,6 +2,8 @@
 
 **In this game you can travel around the universe and land on a planet. On the planet you can find materials that can be used to improve your ship.**
 
+![home](https://github.com/Crusevo/SpaceExploration/assets/121226050/5aa5d308-c2d9-4f5a-bb58-d647905941ec)
+
 **Space ship cockpit!**
 ![cockpit](https://github.com/Crusevo/SpaceExploration/assets/121226050/f472f0ae-8858-4f76-961e-9f1af417f23a)
 
