@@ -5,7 +5,7 @@
 ![home](https://github.com/Crusevo/SpaceExploration/assets/121226050/62bf85bf-0dd0-404f-9679-2b80ec6dd4b7)
 
 **Space ship cockpit!**
-![cockpit](https://github.com/Crusevo/SpaceExploration/assets/121226050/f472f0ae-8858-4f76-961e-9f1af417f23a)
+![cockpit](https://github.com/Crusevo/SpaceExploration/assets/121226050/53496d24-8ceb-4de8-89ec-e88277387732)
 
 **Lander cockpit!**
 ![landercockpittt](https://github.com/Crusevo/SpaceExploration/assets/121226050/240d1b02-2db4-419a-89a3-ba8a5ef853ca)
