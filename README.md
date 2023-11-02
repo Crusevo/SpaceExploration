@@ -16,9 +16,11 @@
 **Landing image**
 ![landingImage](https://github.com/Crusevo/SpaceExploration/assets/121226050/51da9f19-6280-432d-9b3e-108aa92c06b2)
 
-**Starting image**
+**Starting from planet image**
 ![starting](https://github.com/Crusevo/SpaceExploration/assets/121226050/b84bbb18-65a6-4510-8c95-d3efb8917d2a)
 
+**Improve ship panel**
+![improve](https://github.com/Crusevo/SpaceExploration/assets/121226050/3b63bcb5-7454-4d74-aba4-5bbd96531326)
 
 
 
