@@ -37,7 +37,13 @@ public class Ship implements Serializable {
 
     private long planetLandedId;
 
-    private int interstellarEngineLevel = 3;
-    private int landerEngineLevel = 3;
+    private int interstellarEngineLevel = 1;
+    private int landerEngineLevel = 1;
+
+    private boolean isObjectAheadYou = false;
+
+    private int goldNecessaryToImproveInterstellarEngine = 10 * interstellarEngineLevel;
+    private int silverNecessaryToImproveInterstellarEngine = 10 * interstellarEngineLevel;
+    private int ironNecessaryToImproveInterstellarEngine = 10 * interstellarEngineLevel;
 
 }

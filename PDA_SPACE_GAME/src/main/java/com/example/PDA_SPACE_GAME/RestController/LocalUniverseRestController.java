@@ -3,6 +3,7 @@ package com.example.PDA_SPACE_GAME.RestController;
 import com.example.PDA_SPACE_GAME.Model.Ship;
 import com.example.PDA_SPACE_GAME.Repository.ShipRepository;
 import com.example.PDA_SPACE_GAME.Service.LocalUniverseService;
+import com.example.PDA_SPACE_GAME.Service.ShipServiceInUniverse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,6 +18,9 @@ public class LocalUniverseRestController {
     LocalUniverseService localUniverseService;
     @Autowired
     ShipRepository shipRepository;
+
+    @Autowired
+    ShipServiceInUniverse shipServiceInUniverse;
 
 
     @GetMapping("/universe/home/")
@@ -74,6 +78,21 @@ public class LocalUniverseRestController {
 
         return "spaceTravel";
     }
+
+    @GetMapping("/universe/cockpit/improveShip/")
+    public String improveShip(Model model){
+
+        return "improveShip";
+    }
+
+    @PostMapping("/universe/cockpit/improveInterstellarEngine/")
+    public String improveInterstellarEngine(){
+
+        shipServiceInUniverse.improveInterstellarEngine();
+
+        return "redirect:/universe/cockpit/improveShip/";
+    }
+
 
 
 

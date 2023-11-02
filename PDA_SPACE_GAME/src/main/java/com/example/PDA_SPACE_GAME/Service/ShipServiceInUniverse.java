@@ -26,6 +26,7 @@ public class ShipServiceInUniverse {
     @Autowired
     PlanetRepository planetRepository;
 
+
     @Transactional
     public void moveShipUpInUniverse() {
 
@@ -138,8 +139,12 @@ public class ShipServiceInUniverse {
             localUniverseRepository.saveAndFlush(localUniverse);
             shipRepository.saveAndFlush(shipById);
 
+            shipById.setObjectAheadYou(false);
+
         }else {
             System.out.println("Planet ahead you!");
+
+            shipById.setObjectAheadYou(true);
 
         }
     }
@@ -198,6 +203,18 @@ public class ShipServiceInUniverse {
             }
 
             return false;
+    }
+
+    @Transactional
+    public void improveInterstellarEngine(){
+        Ship shipById = shipRepository.findById(1L).orElseThrow();
+
+        if(shipById.getGoldNecessaryToImproveInterstellarEngine() < shipById.getGoldInShip()){
+            shipById.setInterstellarEngineLevel(shipById.getInterstellarEngineLevel() + 1);
+            shipById.setGoldInShip(shipById.getGoldInShip() - shipById.getGoldNecessaryToImproveInterstellarEngine());
+            shipRepository.saveAndFlush(shipById);
+        }
+
     }
 
 
